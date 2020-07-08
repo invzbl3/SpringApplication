@@ -27,7 +27,9 @@ public class CustomUserDetailsService implements UserDetailsService{
 
     static final Logger logger = LoggerFactory.getLogger(CustomUserDetailsService.class);
 
-    private final UserService userService;
+    private UserService userService;
+
+    public CustomUserDetailsService() {}
 
     public CustomUserDetailsService(UserService userService) {
         this.userService = userService;
