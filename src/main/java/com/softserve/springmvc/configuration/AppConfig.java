@@ -1,5 +1,6 @@
 package com.softserve.springmvc.configuration;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -20,16 +21,19 @@ import com.softserve.springmvc.converter.RoleToUserProfileConverter;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.softserve.springmvc")
-//public class AppConfig implements WebMvcConfigurer {
-public class AppConfig extends WebMvcConfigurerAdapter{
+public class AppConfig implements WebMvcConfigurer {
+//public class AppConfig extends WebMvcConfigurerAdapter{
 
+    @Autowired
     private RoleToUserProfileConverter roleToUserProfileConverter;
 
     public AppConfig() {}
 
+/*
     public AppConfig(RoleToUserProfileConverter roleToUserProfileConverter) {
         this.roleToUserProfileConverter = roleToUserProfileConverter;
     }
+*/
 
     /**
      * Configure ViewResolvers to deliver preferred views.

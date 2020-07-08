@@ -9,11 +9,6 @@ import com.softserve.springmvc.model.UserProfile;
 import com.softserve.springmvc.service.UserProfileService;
 
 /**
- * @author invzbl3 on 07.07.2020.
- * @project SpringApplication
- */
-
-/**
  * A converter class used in views to map id's to actual userProfile objects.
  */
 @Component
@@ -21,8 +16,9 @@ public class RoleToUserProfileConverter implements Converter<Object, UserProfile
 
     static final Logger logger = LoggerFactory.getLogger(RoleToUserProfileConverter.class);
 
-    final UserProfileService userProfileService;
+    private UserProfileService userProfileService;
 
+    public RoleToUserProfileConverter() {}
     public RoleToUserProfileConverter(UserProfileService userProfileService) {
         this.userProfileService = userProfileService;
     }
