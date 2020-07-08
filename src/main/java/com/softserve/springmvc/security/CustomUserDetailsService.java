@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -28,8 +27,11 @@ public class CustomUserDetailsService implements UserDetailsService{
 
     static final Logger logger = LoggerFactory.getLogger(CustomUserDetailsService.class);
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    public CustomUserDetailsService(UserService userService) {
+        this.userService = userService;
+    }
 
     @Transactional(readOnly=true)
     public UserDetails loadUserByUsername(String ssoId)
@@ -46,7 +48,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 
 
     private List<GrantedAuthority> getGrantedAuthorities(User user){
-        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+        List<GrantedAuthority> authorities = new ArrayList<>();
 
         for(UserProfile userProfile : user.getUserProfiles()){
             logger.info("UserProfile : {}", userProfile);

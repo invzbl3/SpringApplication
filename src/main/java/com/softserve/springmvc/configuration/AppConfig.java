@@ -1,17 +1,12 @@
 package com.softserve.springmvc.configuration;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.format.FormatterRegistry;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
@@ -25,10 +20,13 @@ import com.softserve.springmvc.converter.RoleToUserProfileConverter;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.softserve.springmvc")
-public class AppConfig extends WebMvcConfigurerAdapter{
+public class AppConfig implements WebMvcConfigurer {
 
-    @Autowired
-    RoleToUserProfileConverter roleToUserProfileConverter;
+    final RoleToUserProfileConverter roleToUserProfileConverter;
+
+    public AppConfig(RoleToUserProfileConverter roleToUserProfileConverter) {
+        this.roleToUserProfileConverter = roleToUserProfileConverter;
+    }
 
     /**
      * Configure ViewResolvers to deliver preferred views.
@@ -77,6 +75,7 @@ public class AppConfig extends WebMvcConfigurerAdapter{
      */
     @Override
     public void configurePathMatch(PathMatchConfigurer matcher) {
-        matcher.setUseRegisteredSuffixPatternMatch(true);
+        //matcher.setUseRegisteredSuffixPatternMatch(true);
+        matcher.setUseRegisteredSuffixPatternMatch(false);
     }
 }

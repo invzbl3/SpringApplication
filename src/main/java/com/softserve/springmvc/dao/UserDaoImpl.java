@@ -44,8 +44,7 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
     public List<User> findAllUsers() {
         Criteria criteria = createEntityCriteria().addOrder(Order.asc("firstName"));
         criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);//To avoid duplicates.
-        List<User> users = (List<User>) criteria.list();
-        return users;
+        return (List<User>) criteria.list();
     }
 
     public void save(User user) {

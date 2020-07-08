@@ -1,7 +1,6 @@
 package com.softserve.springmvc.service;
 
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,8 +16,11 @@ import com.softserve.springmvc.model.UserProfile;
 @Transactional
 public class UserProfileServiceImpl implements UserProfileService{
 
-    @Autowired
-    UserProfileDao dao;
+    final UserProfileDao dao;
+
+    public UserProfileServiceImpl(UserProfileDao dao) {
+        this.dao = dao;
+    }
 
     public UserProfile findById(int id) {
         return dao.findById(id);

@@ -26,14 +26,18 @@ import java.util.Properties;
 @PropertySource(value = { "classpath:application.properties" })
 public class HibernateConfiguration {
 
-    @Autowired
-    private Environment environment;
+    private final Environment environment;
+
+    public HibernateConfiguration(Environment environment) {
+        this.environment = environment;
+    }
 
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[] { "com.softserve.springmvc.model" });
+        //sessionFactory.setPackagesToScan(new String[] { "com.softserve.springmvc.model" });
+        sessionFactory.setPackagesToScan("com.softserve.springmvc.model");
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }

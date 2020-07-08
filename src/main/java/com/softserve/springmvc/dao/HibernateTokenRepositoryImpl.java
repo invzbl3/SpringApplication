@@ -9,8 +9,6 @@ import org.springframework.security.web.authentication.rememberme.PersistentReme
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.softserve.springmvc.dao.AbstractDao;
 import com.softserve.springmvc.model.PersistentLogin;
 
 /**
