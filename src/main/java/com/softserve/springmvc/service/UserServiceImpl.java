@@ -17,9 +17,10 @@ import com.softserve.springmvc.model.User;
 @Transactional
 public class UserServiceImpl implements UserService{
 
-    private final UserDao dao;
+    private UserDao dao;
+    private PasswordEncoder passwordEncoder;
 
-    private final PasswordEncoder passwordEncoder;
+    public UserServiceImpl() {}
 
     public UserServiceImpl(UserDao dao, PasswordEncoder passwordEncoder) {
         this.dao = dao;

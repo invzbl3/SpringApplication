@@ -20,9 +20,12 @@ import com.softserve.springmvc.converter.RoleToUserProfileConverter;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.softserve.springmvc")
-public class AppConfig implements WebMvcConfigurer {
+//public class AppConfig implements WebMvcConfigurer {
+public class AppConfig extends WebMvcConfigurerAdapter{
 
-    final RoleToUserProfileConverter roleToUserProfileConverter;
+    private RoleToUserProfileConverter roleToUserProfileConverter;
+
+    public AppConfig() {}
 
     public AppConfig(RoleToUserProfileConverter roleToUserProfileConverter) {
         this.roleToUserProfileConverter = roleToUserProfileConverter;

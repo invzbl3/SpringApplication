@@ -27,9 +27,10 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    final UserDetailsService userDetailsService;
+    private UserDetailsService userDetailsService;
+    private PersistentTokenRepository tokenRepository;
 
-    final PersistentTokenRepository tokenRepository;
+    public SecurityConfiguration() {}
 
     public SecurityConfiguration(@Qualifier("customUserDetailsService") UserDetailsService userDetailsService, PersistentTokenRepository tokenRepository) {
         this.userDetailsService = userDetailsService;

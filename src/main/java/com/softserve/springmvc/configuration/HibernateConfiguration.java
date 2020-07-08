@@ -26,7 +26,9 @@ import java.util.Properties;
 @PropertySource(value = { "classpath:application.properties" })
 public class HibernateConfiguration {
 
-    private final Environment environment;
+    private Environment environment;
+
+    public HibernateConfiguration() {}
 
     public HibernateConfiguration(Environment environment) {
         this.environment = environment;

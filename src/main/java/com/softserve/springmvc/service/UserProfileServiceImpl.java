@@ -16,7 +16,8 @@ import com.softserve.springmvc.model.UserProfile;
 @Transactional
 public class UserProfileServiceImpl implements UserProfileService{
 
-    final UserProfileDao dao;
+    private UserProfileDao dao;
+    public UserProfileServiceImpl() {}
 
     public UserProfileServiceImpl(UserProfileDao dao) {
         this.dao = dao;
