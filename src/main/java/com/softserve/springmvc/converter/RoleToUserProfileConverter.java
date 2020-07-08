@@ -2,6 +2,7 @@ package com.softserve.springmvc.converter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
@@ -16,12 +17,14 @@ public class RoleToUserProfileConverter implements Converter<Object, UserProfile
 
     static final Logger logger = LoggerFactory.getLogger(RoleToUserProfileConverter.class);
 
+    @Autowired
     private UserProfileService userProfileService;
 
     public RoleToUserProfileConverter() {}
-    public RoleToUserProfileConverter(UserProfileService userProfileService) {
+
+    /*public RoleToUserProfileConverter(UserProfileService userProfileService) {
         this.userProfileService = userProfileService;
-    }
+    }*/
 
     /**
      * Gets UserProfile by Id
