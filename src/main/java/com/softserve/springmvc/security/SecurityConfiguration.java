@@ -28,11 +28,14 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
+    @Qualifier("customUserDetailsService")
     private UserDetailsService userDetailsService;
     @Autowired
     private PersistentTokenRepository tokenRepository;
+    @Autowired
+    PersistentTokenBasedRememberMeServices persistentTokenBasedRememberMeServices;
 
-    public SecurityConfiguration() {}
+    /*public SecurityConfiguration() {}*/
 
     /*public SecurityConfiguration(@Qualifier("customUserDetailsService") UserDetailsService userDetailsService, PersistentTokenRepository tokenRepository) {
         this.userDetailsService = userDetailsService;
@@ -53,6 +56,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .access("hasRole('ADMIN') or hasRole('DBA')").and().formLogin().loginPage("/login")
                 .loginProcessingUrl("/login").usernameParameter("ssoId").passwordParameter("password").and()
                 .rememberMe().rememberMeParameter("remember-me").tokenRepository(tokenRepository)
+                //.rememberMe().key("uniqueAndSecret").rememberMeServices(persistentTokenBasedRememberMeServices).rememberMeParameter("remember-me").alwaysRemember(true).tokenRepository(tokenRepository)
                 .tokenValiditySeconds(86400).and().csrf().and().exceptionHandling().accessDeniedPage("/Access_Denied");
     }
 
