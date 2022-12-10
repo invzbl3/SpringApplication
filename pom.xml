@@ -12,7 +12,7 @@
 
     <properties>
         <hibernate.version>5.0.1.Final</hibernate.version>
-        <springframework.version>5.2.7.RELEASE</springframework.version>
+        <springframework.version>6.0.0</springframework.version>
         <springsecurity.version>5.2.1.RELEASE</springsecurity.version>
 <!--        <hibernate.version>4.3.11.Final</hibernate.version>-->
 <!--        <springframework.version>4.2.5.RELEASE</springframework.version>-->
